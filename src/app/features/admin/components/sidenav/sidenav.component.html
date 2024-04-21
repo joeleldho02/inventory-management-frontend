@@ -1,0 +1,6 @@
+<div [ngClass]="collapsed?'-translate-x-64':''" class="fixed pt-16 w-64 shadow-2xl z-10 h-screen bg-slate-100 transition-all duration-200 px-3">
+    <app-side-nav-item class="cursor-pointer" [title]="'dashboard'" [icon]="'assets/icons/dashboard.svg'" [path]="'/admin'"/>
+    <app-side-nav-item class="cursor-pointer" [title]="'users'" [icon]="'assets/icons/users.svg'" [path]="'users'"/>
+    <app-side-nav-item class="cursor-pointer" [title]="'add user'" [icon]="'assets/icons/add-user.svg'" [path]="'users/add'"/>
+    <app-side-nav-item class="cursor-pointer" [title]="'reset password'" [icon]="'assets/icons/reset.svg'" [path]="'reset-password'"/>
+</div>

@@ -1,0 +1,11 @@
+<app-header [isLoggedIn]="isLoggedIn" (logoutEvent)="logout()" (sidenavEvent)="toggleSideNav()"/>
+
+<app-sidenav *ngIf="isLoggedIn" [collapsed]="sideNavCollapsed"/>
+
+<section [ngClass]="sideNavCollapsed ? '' : 'ms-64' " class="pt-16 transition-all duration-200 p-3">
+    
+    <router-outlet (activate)="onOutletLoaded($event)"/>
+
+    <!-- <app-footer/> -->
+
+</section>

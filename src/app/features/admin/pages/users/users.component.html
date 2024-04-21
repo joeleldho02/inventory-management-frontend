@@ -1,0 +1,61 @@
+<section>
+    <div class="flex items-center justify-between px-12">
+        <p class="text-blue-900 font-bold text-xl">USERS</p>
+        <a routerLink="add" class="bg-blue-800 px-3 py-2 cursor-pointer text-white uppercase font-semibold rounded-xl flex items-center gap-3">
+            <span class="text-2xl text-white font-bold">
+                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                </svg>
+            </span>
+            ADD USER
+        </a>
+    </div>
+    <div class="p-4 border-2 bg-blue-200 rounded-lg mt-5 ">
+        <div *ngIf="users.length > 0" class="grid grid-cols-8 gap-4 mb-2">
+          <div class="flex items-center justify-center text-sm">Image</div>
+          <div class="col-span-1 flex items-center justify-center text-sm">Name</div>
+          <div class="col-span-1 flex items-center justify-center text-sm">Email</div>
+          <div class="col-span-1 flex items-center justify-center text-sm">Mobile</div>
+          <div class="col-span-1 flex items-center justify-center text-sm">Outlet</div>
+          <div class="col-span-1 flex items-center justify-center text-sm">Role/Position</div>
+          <div class="flex items-center text-center justify-center text-sm">Status</div>
+        </div>
+        <div *ngIf="users.length === 0" class="text-center">
+            <p class="font-semibold">Oops.. no users found!</p>
+        </div>
+        <div *ngIf="users.length > 0">
+            <div *ngFor="let user of users" class="grid grid-cols-8 gap-4 bg-white rounded-lg py-2 mb-2">
+                <div class="flex items-center justify-center">
+                   <div class="rounded-full w-12 h-12 overflow-hidden flex">
+                      <img class="object-cover" src="assets/images/prof_pic.jpg" alt="">
+                   </div>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                   <p class="font-semibold">{{user.name}}</p>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                   <p class="font-semibold">{{user.email}}</p>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                   <p class="font-semibold">{{user.mobile}}</p>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                   <p class="font-semibold">{{user.outlet}}</p>
+                </div>
+                <div class="col-span-1 flex items-center justify-center">
+                   <p class="font-semibold">{{user.roles | rolename}}</p>
+                </div>
+                <div class="flex items-center text-center justify-center">
+                   <p *ngIf="user.isActive" class="bg-green-600 text-white uppercase text-xs font-bold px-2 py-1 rounded-lg">Active</p>
+                   <p *ngIf="!user.isActive" class="bg-red-600 text-white uppercase text-xs font-bold px-2 py-1 rounded-lg">Blocked</p>
+                </div>
+                <div  class="flex items-center text-center justify-center">
+                    <a href="/admin/edit-user?id={{user._id}}">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <app-pagination *ngIf="users.length > 0" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems" (pageChanged)="onPageChange($event)"></app-pagination>
+
+</section>

@@ -1,0 +1,13 @@
+<header class="fixed w-full bg-blue-900 z-20">
+    <div class="flex items-center justify-between px-10 py-3">
+        <div class="flex gap-10 items-center">
+            <svg *ngIf="isLoggedIn" (click)="toggleSideNav()" class="w-5 h-5 cursor-pointer rounded-md hover:opacity-75" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#ffffff" fill-rule="evenodd" d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"></path> </g>
+            </svg>
+            <h2 routerLink="/admin" class="text-white font-bold text-2xl cursor-pointer">JMJ Inventory Solutions</h2>
+        </div>
+        <div class="flex gap-3 items-center">
+            <h2 class="text-white font-medium text-xl">Admin Portal</h2>
+            <a *ngIf="isLoggedIn" class="text-white text-sm cursor-pointer hover:text-red-400" (click)="logout()">Logout</a>
+        </div>
+    </div>
+</header>
